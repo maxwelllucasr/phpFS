@@ -1,5 +1,6 @@
 <html>
     <body>
+    <div id="container">
     <h2>Maxwell House File Uploader</h2>
 <?php
 
@@ -49,12 +50,13 @@ $files = array_diff(scandir('uploads'), array('.', '..'));
 // var_dump($files);
 
 foreach($files as $file){ ?>
-     <br>
-     <a href="uploads/<?=$file?>" ><?=$file?></a> 
-     <form action="index.php" method="post">
-        <input type="hidden" name="delete" value="<?=$file?>">
-        <input type="submit" name="deletebutton" value="Delete" style="color:red;margin-left:1rem">
-     </form>
+     <div class="delete">
+        <a href="uploads/<?=$file?>" ><?=$file?></a> 
+        <form action="index.php" method="post" class="delete-form">
+            <input type="hidden" name="delete" value="<?=$file?>">
+            <input type="submit" name="deletebutton" value="Delete" style="color:red;margin-left:1rem">
+        </form>
+     </div>
 
 <?php } ?>
 
@@ -73,6 +75,46 @@ foreach($files as $file){ ?>
         </form>
 
 
-        <span style="font-style:italic; margin-top:5rem; display:block">Made by luke on a trip to the bathroom - 2020</span>
+        <span style="font-style:italic; margin-top:5rem; display:block; text-align:center">Made by luke on a trip to the bathroom - 2020</span>
+        </div>
     </body>
 </html>
+
+<style>
+
+.delete{
+    /* display:inline; */
+    margin-bottom:1rem;
+    background-color: #ccc;
+    border-radius:5px;
+    padding:0.5rem;
+
+}
+.delete a, .delete .delete-form{
+    display:inline;
+}
+#container{
+    margin:2rem 5%;
+    background-color:#bbb;
+    border-radius:10px;
+    padding:1rem;
+}
+body{
+    background-color:#888;
+}
+h2, p, a{
+    font-family:Arial;
+}
+h2{
+    text-align:center;
+}
+#fileUpload, #uploadButton{
+    font-size:1.25rem;
+}
+
+
+
+
+
+
+</style>
